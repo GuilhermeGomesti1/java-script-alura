@@ -136,3 +136,11 @@ button[disabled=disabled], button:disabled {
 .invalido {
 	background-color: lightcoral;
 }
+
+#mensagens-erro {color: red;}
+
+.fadeOut{
+	opacity: 0;
+	transition: 0.5s;
+
+}
