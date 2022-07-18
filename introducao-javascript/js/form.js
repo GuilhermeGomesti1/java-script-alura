@@ -1,4 +1,4 @@
-let botaoAdicionar = document.querySelector("#adicionar-paciente") ;
+var botaoAdicionar = document.querySelector("#adicionar-paciente") ;
 
 botaoAdicionar.addEventListener('click', function(event){
     event.preventDefault();
@@ -58,27 +58,15 @@ function obtemPacienteDoFormulario(form) {
 
 }
 
-function montaTr(paciente){
-    let pacienteTr = document.createElement('tr');
+function montaTr(paciente) {
+    var pacienteTr = document.createElement("tr");
     pacienteTr.classList.add("paciente");
 
-  
-
-
-
-    let nomeTd = (montaTd(paciente.nome, "info-nome"))
-    let pesoTd = (montaTd(paciente.peso, "info-peso"))
-    let alturaTd = (montaTd(paciente.altura, "info-altura"))
-    let gorduraTd = (montaTd(paciente.gordura, "info-gordura"))
-    let imcTd= (montaTd (paciente.imc, "info-imc"))
-    
-
-    pacienteTr.appendChild(nomeTd);
-    pacienteTr.appendChild(pesoTd);
-    pacienteTr.appendChild(alturaTd);
-    pacienteTr.appendChild(gorduraTd);
-    pacienteTr.appendChild(imcTd);
-
+    pacienteTr.appendChild(montaTd(paciente.nome, "info-nome"));
+    pacienteTr.appendChild(montaTd(paciente.peso, "info-peso"));
+    pacienteTr.appendChild(montaTd(paciente.altura, "info-altura"));
+    pacienteTr.appendChild(montaTd(paciente.gordura, "info-gordura"));
+    pacienteTr.appendChild(montaTd(paciente.imc, "info-imc"));
 
     return pacienteTr;
 
@@ -95,7 +83,7 @@ function montaTd(dado,classe) {
 }
     function validaPaciente(paciente) {
 
-        let erros = [];
+        var erros = [];
 
         if (paciente.nome.length == 0){
             erros.push("Nome em branco");
@@ -124,3 +112,14 @@ function montaTd(dado,classe) {
 
     }
 
+    function exibeMensagensDeErro(erros) {
+        var ul = document.querySelector("#mensagens-erro");
+        ul.innerHTML = "";
+    
+        erros.forEach(function(erro) {
+            var li = document.createElement("li");
+            li.textContent = erro;
+            ul.appendChild(li);
+        });
+    }
+    
